@@ -422,7 +422,7 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: "172.31.35.87,172.31.32.189"
+          - seeds: "192.168.43.217,13.127.127.188,13.126.169.98,172.31.32.189,172.31.35.87"
 
 # For workloads with more data than can fit in memory, Cassandra's
 # bottleneck will be reads that need to fetch data from
@@ -623,7 +623,7 @@ listen_address: 172.31.35.87
 
 # Address to broadcast to other Cassandra nodes
 # Leaving this blank will set it to the same value as listen_address
-# broadcast_address: 1.2.3.4
+broadcast_address: 13.127.127.188
 
 # When using multiple physical network interfaces, set this
 # to true to listen on broadcast_address in addition to
@@ -631,7 +631,7 @@ listen_address: 172.31.35.87
 # interfaces.
 # Ignore this property if the network configuration automatically
 # routes  between the public and private networks such as EC2.
-# listen_on_broadcast_address: false
+listen_on_broadcast_address: true
 
 # Internode authentication backend, implementing IInternodeAuthenticator;
 # used to allow/disallow connections from peer nodes.
@@ -686,7 +686,7 @@ start_rpc: false
 # set broadcast_rpc_address to a value other than 0.0.0.0.
 #
 # For security reasons, you should not expose this port to the internet.  Firewall it if needed.
-rpc_address: 172.31.35.87
+rpc_address: 0.0.0.0
 
 # Set rpc_address OR rpc_interface, not both. Interfaces must correspond
 # to a single address, IP aliasing is not supported.
@@ -705,7 +705,7 @@ rpc_port: 9160
 # be set to 0.0.0.0. If left blank, this will be set to the value of
 # rpc_address. If rpc_address is set to 0.0.0.0, broadcast_rpc_address must
 # be set.
-# broadcast_rpc_address: 1.2.3.4
+broadcast_rpc_address: 13.127.127.188
 
 # enable or disable keepalive on rpc/native connections
 rpc_keepalive: true

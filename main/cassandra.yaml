@@ -7,7 +7,7 @@
 
 # The name of the cluster. This is mainly used to prevent machines in
 # one logical cluster from joining another.
-cluster_name: 'SAveAllWeb'
+cluster_name: SaveAllWebCluster
 
 # This defines the number of tokens randomly assigned to this node on the ring
 # The more tokens, relative to other nodes, the larger the proportion of data
@@ -422,7 +422,7 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: "13.232.153.10,52.66.26.21,13.233.197.44"
+          - seeds: ${CASSANDRA_SEEDS:"127.0.0.1"}
 
 # For workloads with more data than can fit in memory, Cassandra's
 # bottleneck will be reads that need to fetch data from
@@ -623,7 +623,7 @@ listen_interface: eth0
 
 # Address to broadcast to other Cassandra nodes
 # Leaving this blank will set it to the same value as listen_address
-broadcast_address: 13.233.197.44
+broadcast_address: ${CASSANDRA_BROADCAST_ADDRESS:127.0.0.1}
 
 # When using multiple physical network interfaces, set this
 # to true to listen on broadcast_address in addition to
@@ -686,7 +686,7 @@ start_rpc: false
 # set broadcast_rpc_address to a value other than 0.0.0.0.
 #
 # For security reasons, you should not expose this port to the internet.  Firewall it if needed.
-rpc_address: 172.31.45.137
+rpc_address: ${CASSANDRA_RPC_ADDRESS:127.0.0.1}
 
 # Set rpc_address OR rpc_interface, not both. Interfaces must correspond
 # to a single address, IP aliasing is not supported.
@@ -959,7 +959,7 @@ cross_node_timeout: false
 #
 # You can use a custom Snitch by setting this to the full class name
 # of the snitch, which will be assumed to be on your classpath.
-endpoint_snitch: GossipingPropertyFileSnitch
+endpoint_snitch: ${CASSANDRA_ENDPOINT_SNITCH:GossipingPropertyFileSnitch}
 
 # controls how often to perform the more expensive part of host score
 # calculation
@@ -1257,4 +1257,4 @@ enable_materialized_views: true
 # Enables SASI index creation on this node.
 # SASI indexes are considered experimental and are not recommended for production use.
 enable_sasi_indexes: true
-auto_bootstrap: false
+auto_bootstrap: ${CASSANDRA_AUTO_BOOTSTRAP:false}

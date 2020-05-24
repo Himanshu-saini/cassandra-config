@@ -422,7 +422,7 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: "13.233.183.252,13.127.84.224"
+          - seeds: "15.206.158.151,13.234.32.196,13.235.45.186,3.7.68.250,13.233.251.8,13.235.19.166"
 
 # For workloads with more data than can fit in memory, Cassandra's
 # bottleneck will be reads that need to fetch data from
@@ -623,7 +623,7 @@ listen_interface: eth0
 
 # Address to broadcast to other Cassandra nodes
 # Leaving this blank will set it to the same value as listen_address
-broadcast_address: 13.127.84.224
+broadcast_address: 13.235.45.186
 
 # When using multiple physical network interfaces, set this
 # to true to listen on broadcast_address in addition to
